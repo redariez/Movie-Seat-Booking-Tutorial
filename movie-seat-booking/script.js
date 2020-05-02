@@ -35,7 +35,19 @@ function populateUI() {
     const selectedSeats = JSON.parse(localStorage.getItem('selectedSeats')
     );
 
-    console.log(selectedSeats);
+   if(selectedSeats !== null && selectedSeats.length > 0) {
+    seats.forEach((seat, index) => {
+        if(selectedSeats.indexOf(index) > - 1) {
+            seat.classList.add('selected');
+        }
+    });
+   } 
+
+   const selectedMovieIndex = localStorage.getItem('selectedMovieindex');
+
+   if(selectedMovieIndex !== null) {
+       movieSelect.selectedIndex = selectedMovieIndex;
+   }
 }
 
 
@@ -55,3 +67,6 @@ container.addEventListener('click', (e) => {
     updateSelectedCount();
 }
 });
+
+//Int\itial count and total set
+updateSelectedCount();
